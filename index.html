@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fabricio Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ── Reset e base ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cinza-fundo: #f5f7fa;
+            --branco: #ffffff;
+            --cinza-texto: #1e1e2a;
+            --cinza-suave: #6b7280;
+            --cinza-claro: #9ca3af;
+            --borda: #e9edf4;
+            --sombra: 0 12px 32px rgba(0, 0, 0, 0.06);
+            --sombra-hover: 0 20px 40px rgba(0, 0, 0, 0.10);
+            --radius: 28px;
+            --radius-md: 20px;
+            --transition: 0.25s cubic-bezier(0.2, 0, 0, 1);
+            --azul: #2563eb;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cinza-fundo);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            color: var(--cinza-texto);
+        }
+
+        /* ── Container central ── */
+        .container {
+            max-width: 680px;
+            width: 100%;
+        }
+
+        /* ── Card principal ── */
+        .profile-card {
+            background: var(--branco);
+            border-radius: var(--radius);
+            box-shadow: var(--sombra);
+            overflow: hidden;
+            transition: box-shadow var(--transition);
+        }
+
+        .profile-card:hover {
+            box-shadow: var(--sombra-hover);
+        }
+
+        /* ── Header / Hero ── */
+        .hero {
+            padding: 48px 36px 40px;
+            text-align: center;
+            background: var(--branco);
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .profile-pic {
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background-image: url('foto-perfil.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 3px solid var(--cinza-claro);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+            transition: transform var(--transition);
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.02);
+        }
+
+        .name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+            color: var(--cinza-texto);
+            margin-bottom: 6px;
+        }
+
+        .title-badge {
+            display: inline-block;
+            background: #eef2f7;
+            padding: 6px 22px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--cinza-suave);
+            letter-spacing: 0.3px;
+            margin-bottom: 14px;
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            color: var(--cinza-suave);
+            max-width: 400px;
+            margin: 0 auto;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* ── Conteúdo ── */
+        .content {
+            padding: 36px 36px 32px;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--cinza-texto);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.2px;
+        }
+
+        .section-title i {
+            color: var(--azul);
+            font-size: 1.2rem;
+        }
+
+        /* ── Grid de links (cards elegantes) ── */
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--branco);
+            padding: 16px 22px;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            color: var(--cinza-texto);
+            border: 1px solid var(--borda);
+            transition: all var(--transition);
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .link-btn:hover {
+            border-color: var(--azul);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.08);
+            background: #fafcff;
+        }
+
+        .link-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .icon-circle {
+            width: 46px;
+            height: 46px;
+            background: #f0f4fe;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--azul);
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+
+        .link-btn:hover .icon-circle {
+            background: var(--azul);
+            color: var(--branco);
+            transform: scale(0.96);
+        }
+
+        .info h4 {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            color: var(--cinza-texto);
+        }
+
+        .info p {
+            font-size: 0.78rem;
+            color: var(--cinza-suave);
+            margin: 0;
+        }
+
+        .arrow-icon {
+            color: var(--cinza-suave);
+            transition: all var(--transition);
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        .link-btn:hover .arrow-icon {
+            color: var(--azul);
+            transform: translateX(6px);
+            opacity: 1;
+        }
+
+        /* cores específicas para ícones */
+        .whatsapp .icon-circle { background: #e6f7ee; color: #0a7e3c; }
+        .whatsapp:hover .icon-circle { background: #0a7e3c; color: #fff; }
+
+        .instagram .icon-circle { background: #fef0f0; color: #c13584; }
+        .instagram:hover .icon-circle { background: #c13584; color: #fff; }
+
+        .facebook .icon-circle { background: #eaf1ff; color: #1877f2; }
+        .facebook:hover .icon-circle { background: #1877f2; color: #fff; }
+
+        .website .icon-circle { background: #f0f4fe; color: var(--azul); }
+        .website:hover .icon-circle { background: var(--azul); color: #fff; }
+
+        /* ── Footer ── */
+        .footer {
+            border-top: 1px solid var(--borda);
+            padding-top: 24px;
+            text-align: center;
+        }
+
+        .social-mini {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-bottom: 14px;
+        }
+
+        .social-mini a {
+            color: var(--cinza-suave);
+            font-size: 1.2rem;
+            transition: all var(--transition);
+        }
+
+        .social-mini a:hover {
+            color: var(--azul);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            color: var(--cinza-suave);
+            line-height: 1.6;
+        }
+
+        /* ── Responsivo ── */
+        @media (max-width: 600px) {
+            body {
+                padding: 24px 16px;
+            }
+
+            .hero {
+                padding: 32px 20px 28px;
+            }
+
+            .profile-pic {
+                width: 92px;
+                height: 92px;
+            }
+
+            .name {
+                font-size: 1.7rem;
+            }
+
+            .content {
+                padding: 24px 20px 28px;
+            }
+
+            .link-btn {
+                padding: 14px 16px;
+            }
+
+            .link-left {
+                gap: 14px;
+            }
+
+            .icon-circle {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+                border-radius: 14px;
+            }
+
+            .info h4 {
+                font-size: 0.92rem;
+            }
+
+            .section-title {
+                font-size: 1rem;
+            }
+
+            .social-mini {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero {
+                padding: 24px 14px;
+            }
+            .name {
+                font-size: 1.4rem;
+            }
+            .tagline {
+                font-size: 0.85rem;
+            }
+            .content {
+                padding: 18px 14px 22px;
+            }
+            .link-btn {
+                padding: 12px 12px;
+                border-radius: 16px;
+            }
+            .link-left {
+                gap: 10px;
+            }
+            .icon-circle {
+                width: 34px;
+                height: 34px;
+                font-size: 0.95rem;
+                border-radius: 12px;
+            }
+            .info p {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* ── animação de entrada ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .profile-card {
+            animation: fadeUp 0.5s ease-out forwards;
+        }
+
+        .link-btn {
+            opacity: 0;
+            animation: fadeUp 0.4s ease-out forwards;
+        }
+
+        .link-btn:nth-child(1) { animation-delay: 0.05s; }
+        .link-btn:nth-child(2) { animation-delay: 0.10s; }
+        .link-btn:nth-child(3) { animation-delay: 0.15s; }
+        .link-btn:nth-child(4) { animation-delay: 0.20s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card">
+
+            <!-- Header -->
+            <div class="hero">
+                <div class="profile-pic"></div>
+                <h1 class="name">Fabricio Designer</h1>
+                <div class="title-badge">Designer &amp; Fotógrafo</div>
+                <p class="tagline">
+                    “Capturando momentos e criando experiências visuais únicas”
+                </p>
+            </div>
+
+            <!-- Conteúdo -->
+            <div class="content">
+                <div class="section-title">
+                    <i class="fas fa-link"></i>
+                    <span>Conecte-se comigo</span>
+                </div>
+
+                <div class="links-grid">
+                    <!-- WhatsApp -->
+                    <a href="https://api.whatsapp.com/send/?phone=5577999410770&text=Ol%C3%A1%2C+Fabricio%21%0AQuero+fazer+um+or%C3%A7amento+com+voc%C3%AA+para+cria%C3%A7%C3%A3o+de+arte+%2F+design.+Pode+me+explicar+como+funciona%3F&type=phone_number&app_absent=0" target="_blank" class="link-btn whatsapp">
+                        <div class="link-left">
+                            <div class="icon-circle"><i class="fab fa-whatsapp"></i></div>
+                            <div class="info">
+                                <h4>WhatsApp</h4>
+                                <p>Contato direto e rápido</p>
+                            </div>
+                        </div>
+                        <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/fabriciodesigner_/" target="_blank" class="link-btn instagram">
+                        <div class="link-left">
+                            <div class="icon-circle"><i class="fab fa-instagram"></i></div>
+                            <div class="info">
+                                <h4>Instagram</h4>
+                                <p>Portfólio e bastidores</p>
+                            </div>
+                        </div>
+                        <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/share/1ZBAuPvyZ6/?mibextid=wwXIfr" target="_blank" class="link-btn facebook">
+                        <div class="link-left">
+                            <div class="icon-circle"><i class="fab fa-facebook-f"></i></div>
+                            <div class="info">
+                                <h4>Facebook</h4>
+                                <p>Conecte-se na rede social</p>
+                            </div>
+                        </div>
+                        <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+
+                    <!-- Site -->
+                    <a href="https://fabriciodesigner.netlify.app/" target="_blank" class="link-btn website">
+                        <div class="link-left">
+                            <div class="icon-circle"><i class="fas fa-globe"></i></div>
+                            <div class="info">
+                                <h4>Meu Site</h4>
+                                <p>Portfólio completo e serviços</p>
+                            </div>
+                        </div>
+                        <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+                    </a>
+                </div>
+
+                <!-- Footer -->
+                <div class="footer">
+                    <div class="social-mini">
+                        <a href="https://www.instagram.com/fabriciodesigner_/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/1ZBAuPvyZ6/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:fabriciodesignr82@gmail.com" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <div class="copyright">
+                        <p>© <span id="current-year">2026</span> Fabricio Designer — Todos os direitos reservados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        document.querySelectorAll('.link-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                this.style.transform = 'scale(0.97)';
+                setTimeout(() => { this.style.transform = ''; }, 160);
+            });
+        });
+    </script>
+</body>
+</html>
