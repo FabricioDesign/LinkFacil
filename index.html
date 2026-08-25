@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
-        /* ── Reset e base ── */
         * {
             margin: 0;
             padding: 0;
@@ -27,6 +26,7 @@
             --radius-md: 20px;
             --transition: 0.25s cubic-bezier(0.2, 0, 0, 1);
             --azul: #2563eb;
+            --verde: #0a7e3c;
         }
 
         body {
@@ -40,13 +40,11 @@
             color: var(--cinza-texto);
         }
 
-        /* ── Container central ── */
         .container {
             max-width: 680px;
             width: 100%;
         }
 
-        /* ── Card principal ── */
         .profile-card {
             background: var(--branco);
             border-radius: var(--radius);
@@ -59,7 +57,6 @@
             box-shadow: var(--sombra-hover);
         }
 
-        /* ── Header / Hero ── */
         .hero {
             padding: 48px 36px 40px;
             text-align: center;
@@ -115,7 +112,6 @@
             line-height: 1.5;
         }
 
-        /* ── Conteúdo ── */
         .content {
             padding: 36px 36px 32px;
         }
@@ -137,7 +133,6 @@
             font-size: 1.2rem;
         }
 
-        /* ── Grid de links (cards elegantes) ── */
         .links-grid {
             display: flex;
             flex-direction: column;
@@ -219,7 +214,6 @@
             opacity: 1;
         }
 
-        /* cores específicas para ícones */
         .whatsapp .icon-circle { background: #e6f7ee; color: #0a7e3c; }
         .whatsapp:hover .icon-circle { background: #0a7e3c; color: #fff; }
 
@@ -232,7 +226,58 @@
         .website .icon-circle { background: #f0f4fe; color: var(--azul); }
         .website:hover .icon-circle { background: var(--azul); color: #fff; }
 
-        /* ── Footer ── */
+        /* ── Botão de atendimento (Fotografia & Vídeo) ── */
+        .atendimento-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, var(--azul), #1d4ed8);
+            color: var(--branco);
+            border: none;
+            border-radius: var(--radius-md);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            margin-bottom: 36px;
+        }
+
+        .atendimento-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        }
+
+        .atendimento-btn .btn-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .atendimento-btn .btn-left i {
+            font-size: 1.3rem;
+        }
+
+        .atendimento-btn .btn-left .fa-camera {
+            color: #fcd34d;
+        }
+
+        .atendimento-btn .btn-arrow {
+            color: rgba(255, 255, 255, 0.7);
+            transition: all var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .atendimento-btn:hover .btn-arrow {
+            color: #fff;
+            transform: translateX(6px);
+        }
+
         .footer {
             border-top: 1px solid var(--borda);
             padding-top: 24px;
@@ -263,98 +308,45 @@
             line-height: 1.6;
         }
 
-        /* ── Responsivo ── */
         @media (max-width: 600px) {
-            body {
-                padding: 24px 16px;
-            }
-
-            .hero {
-                padding: 32px 20px 28px;
-            }
-
-            .profile-pic {
-                width: 92px;
-                height: 92px;
-            }
-
-            .name {
-                font-size: 1.7rem;
-            }
-
-            .content {
-                padding: 24px 20px 28px;
-            }
-
-            .link-btn {
-                padding: 14px 16px;
-            }
-
-            .link-left {
-                gap: 14px;
-            }
-
-            .icon-circle {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-                border-radius: 14px;
-            }
-
-            .info h4 {
-                font-size: 0.92rem;
-            }
-
-            .section-title {
+            body { padding: 24px 16px; }
+            .hero { padding: 32px 20px 28px; }
+            .profile-pic { width: 92px; height: 92px; }
+            .name { font-size: 1.7rem; }
+            .content { padding: 24px 20px 28px; }
+            .link-btn { padding: 14px 16px; }
+            .link-left { gap: 14px; }
+            .icon-circle { width: 40px; height: 40px; font-size: 1.1rem; border-radius: 14px; }
+            .info h4 { font-size: 0.92rem; }
+            .section-title { font-size: 1rem; }
+            .social-mini { gap: 20px; }
+            .atendimento-btn {
                 font-size: 1rem;
-            }
-
-            .social-mini {
-                gap: 20px;
+                padding: 16px 20px;
             }
         }
 
         @media (max-width: 400px) {
-            .hero {
-                padding: 24px 14px;
+            .hero { padding: 24px 14px; }
+            .name { font-size: 1.4rem; }
+            .tagline { font-size: 0.85rem; }
+            .content { padding: 18px 14px 22px; }
+            .link-btn { padding: 12px 12px; border-radius: 16px; }
+            .link-left { gap: 10px; }
+            .icon-circle { width: 34px; height: 34px; font-size: 0.95rem; border-radius: 12px; }
+            .info p { font-size: 0.7rem; }
+            .atendimento-btn {
+                font-size: 0.9rem;
+                padding: 14px 16px;
             }
-            .name {
-                font-size: 1.4rem;
-            }
-            .tagline {
-                font-size: 0.85rem;
-            }
-            .content {
-                padding: 18px 14px 22px;
-            }
-            .link-btn {
-                padding: 12px 12px;
-                border-radius: 16px;
-            }
-            .link-left {
+            .atendimento-btn .btn-left {
                 gap: 10px;
-            }
-            .icon-circle {
-                width: 34px;
-                height: 34px;
-                font-size: 0.95rem;
-                border-radius: 12px;
-            }
-            .info p {
-                font-size: 0.7rem;
             }
         }
 
-        /* ── animação de entrada ── */
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(18px) scale(0.98);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(18px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .profile-card {
@@ -370,31 +362,40 @@
         .link-btn:nth-child(2) { animation-delay: 0.10s; }
         .link-btn:nth-child(3) { animation-delay: 0.15s; }
         .link-btn:nth-child(4) { animation-delay: 0.20s; }
+
+        .atendimento-btn {
+            opacity: 0;
+            animation: fadeUp 0.4s ease-out forwards;
+            animation-delay: 0.25s;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="profile-card">
-
-            <!-- Header -->
             <div class="hero">
                 <div class="profile-pic"></div>
                 <h1 class="name">Fabricio Designer</h1>
                 <div class="title-badge">Designer &amp; Fotógrafo</div>
-                <p class="tagline">
-                    “Capturando momentos e criando experiências visuais únicas”
-                </p>
+                <p class="tagline">“Capturando momentos e criando experiências visuais únicas”</p>
             </div>
 
-            <!-- Conteúdo -->
             <div class="content">
                 <div class="section-title">
                     <i class="fas fa-link"></i>
                     <span>Conecte-se comigo</span>
                 </div>
 
+                <!-- Botão de Atendimento - Fotografia & Vídeo -->
+                <a href="https://fabricio-almeida-fotografia-video.netlify.app/" target="_blank" class="atendimento-btn">
+                    <span class="btn-left">
+                        <i class="fas fa-camera"></i>
+                        Fotografia &amp; Vídeo
+                    </span>
+                    <span class="btn-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+
                 <div class="links-grid">
-                    <!-- WhatsApp -->
                     <a href="https://api.whatsapp.com/send/?phone=5577999410770&text=Ol%C3%A1%2C+Fabricio%21%0AQuero+fazer+um+or%C3%A7amento+com+voc%C3%AA+para+cria%C3%A7%C3%A3o+de+arte+%2F+design.+Pode+me+explicar+como+funciona%3F&type=phone_number&app_absent=0" target="_blank" class="link-btn whatsapp">
                         <div class="link-left">
                             <div class="icon-circle"><i class="fab fa-whatsapp"></i></div>
@@ -406,7 +407,6 @@
                         <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
                     </a>
 
-                    <!-- Instagram -->
                     <a href="https://www.instagram.com/fabriciodesigner_/" target="_blank" class="link-btn instagram">
                         <div class="link-left">
                             <div class="icon-circle"><i class="fab fa-instagram"></i></div>
@@ -418,7 +418,6 @@
                         <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
                     </a>
 
-                    <!-- Facebook -->
                     <a href="https://www.facebook.com/share/1ZBAuPvyZ6/?mibextid=wwXIfr" target="_blank" class="link-btn facebook">
                         <div class="link-left">
                             <div class="icon-circle"><i class="fab fa-facebook-f"></i></div>
@@ -430,7 +429,6 @@
                         <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
                     </a>
 
-                    <!-- Site -->
                     <a href="https://fabriciodesigner.netlify.app/" target="_blank" class="link-btn website">
                         <div class="link-left">
                             <div class="icon-circle"><i class="fas fa-globe"></i></div>
@@ -443,7 +441,6 @@
                     </a>
                 </div>
 
-                <!-- Footer -->
                 <div class="footer">
                     <div class="social-mini">
                         <a href="https://www.instagram.com/fabriciodesigner_/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -461,8 +458,8 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        document.querySelectorAll('.link-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+        document.querySelectorAll('.link-btn, .atendimento-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
                 this.style.transform = 'scale(0.97)';
                 setTimeout(() => { this.style.transform = ''; }, 160);
             });
